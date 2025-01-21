@@ -364,8 +364,7 @@ function App() {
   </div>
 </section>
 
-
-      {/* Certifications Section */}
+{/* Certifications Section */}
 <section id="certificates" className="py-20 bg-gradient-to-b from-purple-900/20 to-blue-900/20">
   <div className="container mx-auto px-6">
     {/* Heading */}
@@ -378,54 +377,54 @@ function App() {
 
     {/* Certification Cards */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-      {/* Certification 1 */}
-      <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">Data Science Professional Certification</h3>
-        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: IBM</p>
-        <a
-          href="https://www.ibm.com/in-en"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
-        >
-          View Certificate
-        </a>
-      </div>
-
-      {/* Certification 2 */}
-      <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">UX Design Professional Certification</h3>
-        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Google</p>
-        <a
-          href="https://www.coursera.org/account/accomplishments/professional-cert/08GTRDAHUZY2"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
-        >
-          View Certificate
-        </a>
-      </div>
-
-      {/* Certification 3 */}
-      <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">AWS Certified Solutions Architect</h3>
-        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Amazon Web Services</p>
-        <a
-          href="https://aws.amazon.com/certification/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
-        >
-          View Certificate
-        </a>
-      </div>
-
-      {/* Certification 4 */}
+      {/* Certification 1 - Meta */}
       <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
         <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">Meta Data Analyst Certification</h3>
         <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Meta</p>
         <a
-          href="https://about.meta.com/"
+          href="https://www.coursera.org/account/accomplishments/professional-cert/ZYQ9R1HTYB1A"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
+        >
+          View Certificate
+        </a>
+      </div>
+
+      {/* Certification 2 - AWS */}
+      <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">AWS Certified Solutions Architect</h3>
+        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Amazon Web Services</p>
+        <a
+          href="https://www.coursera.org/account/accomplishments/specialization/ZGGL9QSNCNFA"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
+        >
+          View Certificate
+        </a>
+      </div>
+
+      {/* Certification 3 - IBM */}
+      <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">IBM Data Science Professional Certification</h3>
+        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: IBM</p>
+        <a
+          href="https://www.coursera.org/account/accomplishments/professional-cert/4ZI02EHQTCXD"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
+        >
+          View Certificate
+        </a>
+      </div>
+
+      {/* Certification 4 - Google (Unchanged) */}
+      <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">Google UX Design Professional Certification</h3>
+        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Google</p>
+        <a
+          href="https://www.coursera.org/account/accomplishments/professional-cert/08GTRDAHUZY2"
           target="_blank"
           rel="noopener noreferrer"
           className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
