@@ -577,7 +577,7 @@ function App() {
       <div className="group">
         <div className="relative overflow-hidden rounded-lg">
           <img
-            src="./lykaconnect.png"
+            src="/portfolio/lykaconnect.png"
             alt="LykaConnect Real Estate Platform"
             className="w-full transition-transform duration-500 group-hover:scale-110"
           />
@@ -595,7 +595,7 @@ function App() {
       <div className="group">
         <div className="relative overflow-hidden rounded-lg">
           <img
-            src="./mind-ease.png"
+            src="/portfolio/mind-ease.png"
             alt="MindEase: AI Mental Health Assistant"
             className="w-full transition-transform duration-500 group-hover:scale-110"
           />
