@@ -8,6 +8,8 @@ import {
   Award,
   Star,
   Quote,
+  X,
+  Menu,
   Brain,
   Book,
   AlignCenterVertical as Certificate,
@@ -19,12 +21,22 @@ import {
 } from 'lucide-react';
 import ModelViewer from './ModelViewer'; // Import the 3D viewer component
 
+import { useState } from 'react';
+
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
   // Scroll-to-section function
   function scrollToSection(id: string) {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      try {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } catch (error) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 
@@ -108,17 +120,79 @@ function App() {
       {/* Mobile Menu */}
       <div className="sm:hidden">
         <button
-          onClick={() => scrollToSection('contact')}
+          onClick={() => setMenuOpen(!menuOpen)}
           className="text-lg text-gray-300 hover:text-purple-400 transition-colors"
         >
-          Menu
+          {menuOpen ? (
+            <X className="w-6 h-6 text-purple-400" />
+          ) : (
+            <Menu className="w-6 h-6 text-purple-400" />
+          )}
         </button>
+        {menuOpen && (
+          <div className="flex flex-col space-y-4 mt-4">
+            <button
+              onClick={() => {
+                scrollToSection('about');
+                setMenuOpen(false);
+              }}
+              className="text-lg text-gray-300 hover:text-purple-400 transition-colors"
+            >
+              About
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('skills');
+                setMenuOpen(false);
+              }}
+              className="text-lg text-gray-300 hover:text-purple-400 transition-colors"
+            >
+              Skills
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('education');
+                setMenuOpen(false);
+              }}
+              className="text-lg text-gray-300 hover:text-purple-400 transition-colors"
+            >
+              Education
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('certificates');
+                setMenuOpen(false);
+              }}
+              className="text-lg text-gray-300 hover:text-purple-400 transition-colors"
+            >
+              Certificates
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('projects');
+                setMenuOpen(false);
+              }}
+              className="text-lg text-gray-300 hover:text-purple-400 transition-colors"
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('contact');
+                setMenuOpen(false);
+              }}
+              className="text-lg text-gray-300 hover:text-purple-400 transition-colors"
+            >
+              Contact
+            </button>
+          </div>
+        )}
       </div>
     </div>
   </div>
 </nav>
 {/* Hero Section */}
-<section className="relative min-h-screen flex items-center bg-black pt-12 md:pt-16">
+<section className="relative min-h-screen flex items-center bg-black pt-8 md:pt-16">
   <div className="container mx-auto px-6 relative z-10 py-24 md:py-32">
     <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
       {/* Left: Text Content */}
@@ -158,7 +232,7 @@ function App() {
 
 
 {/* About Me Section */}
-<section id="about" className="py-10 md:py-16 bg-gradient-to-b from-black to-purple-900/20">
+<section id="about" className="py-8 md:py-16 bg-gradient-to-b from-black to-purple-900/20">
   <div className="container mx-auto px-4 md:px-6">
     <div className="flex flex-col items-center md:flex-row md:items-center md:gap-4 mb-8 fade-in-section">
       <div className="flex items-center justify-center md:justify-start">
@@ -170,16 +244,10 @@ function App() {
     </div>
     <div className="bg-purple-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm">
       <p className="text-base md:text-xl text-gray-300 leading-relaxed fade-in-section text-center md:text-left">
-        I’m a passionate Full Stack Developer with experience in building high-performance web applications,
-        specializing in responsive design, cross-browser compatibility, and creating seamless digital experiences.
+        Multidisciplinary Full Stack Developer with a strong foundation in AI/ML and a proven track record of building impactful web platforms across real estate, esports, healthcare, education, and event management.
       </p>
       <p className="text-base md:text-xl text-gray-300 leading-relaxed mt-4 fade-in-section text-center md:text-left">
-        With expertise in <span className="text-purple-400">React.js</span>, <span className="text-purple-400">Node.js</span>, and 
-        <span className="text-purple-400">UX/UI Design</span>, I focus on delivering user-centered solutions.
-      </p>
-      <p className="text-base md:text-xl text-gray-300 leading-relaxed mt-4 fade-in-section text-center md:text-left">
-        I’m continuously expanding my knowledge in <span className="text-purple-400">Astrophysics</span> with a keen interest
-        in cosmology and space exploration.
+        Known for blending technical precision with user empathy to deliver scalable, SEO-optimized, and conversion-focused products. Passionate about using technology to solve real-world problems—whether it's extracting real estate insights, running tournaments, or building mental health AI tools.
       </p>
     </div>
   </div>
@@ -187,7 +255,7 @@ function App() {
 
 
 {/* Skills Section */}
-<section id="skills" className="py-20 bg-gradient-to-b from-purple-900/20 to-blue-900/20">
+<section id="skills" className="py-16 bg-gradient-to-b from-purple-900/20 to-blue-900/20">
   <div className="container mx-auto px-6">
     {/* Heading */}
     <div className="flex flex-col md:flex-row items-center md:gap-4 mb-12 text-center md:text-left fade-in-section">
@@ -207,15 +275,19 @@ function App() {
         <ul className="space-y-2 text-gray-300">
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            React.js
+            HTML, CSS, JavaScript
           </li>
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            Node.js
+            React.js, Next.js
           </li>
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            NativeScript
+            Node.js, TypeScript
+          </li>
+          <li className="flex items-center gap-2 fade-in-section">
+            <Star className="w-4 h-4 text-purple-400" />
+            Tailwind CSS, Responsive Design
           </li>
         </ul>
       </div>
@@ -228,15 +300,15 @@ function App() {
         <ul className="space-y-2 text-gray-300">
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            JavaScript
+            Python, SQL
           </li>
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            TypeScript
+            JavaScript, TypeScript
           </li>
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            Python
+            Supabase, MongoDB
           </li>
         </ul>
       </div>
@@ -291,15 +363,19 @@ function App() {
         <ul className="space-y-2 text-gray-300">
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            SEO Optimization
+            AI/ML Logic Implementation
           </li>
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            Cross-Browser Compatibility
+            Web Scraping Automation
           </li>
           <li className="flex items-center gap-2 fade-in-section">
             <Star className="w-4 h-4 text-purple-400" />
-            Astrophysics Enthusiast
+            Data Analysis, NLP Basics
+          </li>
+          <li className="flex items-center gap-2 fade-in-section">
+            <Star className="w-4 h-4 text-purple-400" />
+            Agile Workflows, Client Coordination
           </li>
         </ul>
       </div>
@@ -326,10 +402,10 @@ function App() {
         <div className="flex flex-col md:flex-row justify-between items-start mb-4 text-center md:text-left">
           <div>
             <h3 className="text-xl md:text-2xl font-bold text-purple-400">
-              Bachelor of Science in Physics
+              Bachelor of Engineering in AI & Data Science (Ongoing)
             </h3>
             <p className="text-lg md:text-xl text-blue-400">
-              Indira Gandhi Open University
+              Indian Institute of Technology Jodhpur
             </p>
           </div>
           <span className="text-sm md:text-base text-gray-400 mt-4 md:mt-0">
@@ -337,7 +413,7 @@ function App() {
           </span>
         </div>
         <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-          Developing knowledge in astrophysics with a focus on cosmology and space exploration.
+          Exploring physics, cosmology, and scientific thinking to complement computational expertise.
         </p>
       </div>
 
@@ -346,7 +422,7 @@ function App() {
         <div className="flex flex-col md:flex-row justify-between items-start mb-4 text-center md:text-left">
           <div>
             <h3 className="text-xl md:text-2xl font-bold text-purple-400">
-              Bachelor of Technology in Artificial Intelligence and Machine Learning
+              Bachelor of Technology in AI & Machine Learning
             </h3>
             <p className="text-lg md:text-xl text-blue-400">
               Manakula Vinayagar Institute of Technology
@@ -357,7 +433,7 @@ function App() {
           </span>
         </div>
         <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-          Specialized in Artificial Intelligence with foundational knowledge in Machine Learning.
+          2022–2023
         </p>
       </div>
     </div>
@@ -379,10 +455,10 @@ function App() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       {/* Certification 1 - Meta */}
       <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">Meta Data Analyst Certification</h3>
-        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Meta</p>
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">CS50: Introduction to Computer Science</h3>
+        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Harvard University</p>
         <a
-          href="https://www.coursera.org/account/accomplishments/professional-cert/ZYQ9R1HTYB1A"
+          href="https://certificates.cs50.io/6cac2800-7621-4f5f-a554-c6eaa316ce25.pdf?size=letter"
           target="_blank"
           rel="noopener noreferrer"
           className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
@@ -393,10 +469,10 @@ function App() {
 
       {/* Certification 2 - AWS */}
       <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">AWS Certified Solutions Architect</h3>
-        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Amazon Web Services</p>
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">Full Stack Software Developer</h3>
+        <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: IBM</p>
         <a
-          href="https://www.coursera.org/account/accomplishments/specialization/ZGGL9QSNCNFA"
+          href="#"
           target="_blank"
           rel="noopener noreferrer"
           className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
@@ -407,10 +483,10 @@ function App() {
 
       {/* Certification 3 - IBM */}
       <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">IBM Data Science Professional Certification</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">Data Science Professional</h3>
         <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: IBM</p>
         <a
-          href="https://www.coursera.org/account/accomplishments/professional-cert/4ZI02EHQTCXD"
+          href="#"
           target="_blank"
           rel="noopener noreferrer"
           className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
@@ -421,10 +497,10 @@ function App() {
 
       {/* Certification 4 - Google (Unchanged) */}
       <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 backdrop-blur-sm fade-in-section">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">Google UX Design Professional Certification</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-blue-400 mb-2">UX Design Professional</h3>
         <p className="text-sm md:text-base text-gray-400 mb-4">Issued by: Google</p>
         <a
-          href="https://www.coursera.org/account/accomplishments/professional-cert/08GTRDAHUZY2"
+          href="#"
           target="_blank"
           rel="noopener noreferrer"
           className="text-purple-400 hover:text-purple-500 transition-colors text-sm md:text-base"
@@ -434,7 +510,16 @@ function App() {
       </div>
     </div>
   </div>
-</section>
+  {/* View More Button */}
+  <div className="text-center mt-8">
+    <a
+      href="/portfolio/certifications"
+      className="px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white font-medium rounded-md transition-colors"
+    >
+      View More
+    </a>
+  </div>
+  </section>
 
 
 {/* Testimonials Section */}
@@ -488,56 +573,40 @@ function App() {
 
     {/* Projects Grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-      {/* Project 1: Anime Esports */}
+      {/* Project 1: LykaConnect Real Estate Platform */}
       <div className="group">
         <div className="relative overflow-hidden rounded-lg">
           <img
-            src="https://raw.githubusercontent.com/gurugsv7/portfolio/main/src/anime.png"
-            alt="Anime Esports"
+            src="./lykaconnect.png"
+            alt="LykaConnect Real Estate Platform"
             className="w-full transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
         <h3 className="text-xl md:text-2xl font-bold mt-4 md:mt-6 mb-2 md:mb-4 text-purple-400 text-center md:text-left">
-          Anime Esports
+          LykaConnect Real Estate Platform
         </h3>
         <p className="text-sm md:text-base text-gray-400 text-center md:text-left">
-          A dynamic platform built to engage anime and gaming enthusiasts with interactive animations, unique branding, and seamless navigation.
+          Built an AI-powered real estate platform with ROI tools, mortgage logic, and price drop alerts.
         </p>
-        <a
-          href="https://www.animeesportsorg.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block text-purple-400 hover:text-purple-500 transition-colors font-semibold text-center md:text-left"
-        >
-          View Project
-        </a>
       </div>
 
-      {/* Project 2: Diagnopro */}
+      {/* Project 2: MindEase: AI Mental Health Assistant */}
       <div className="group">
         <div className="relative overflow-hidden rounded-lg">
           <img
-            src="https://raw.githubusercontent.com/gurugsv7/portfolio/main/src/diagnopro.png"
-            alt="Diagnopro"
+            src="./mind-ease.png"
+            alt="MindEase: AI Mental Health Assistant"
             className="w-full transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
         <h3 className="text-xl md:text-2xl font-bold mt-4 md:mt-6 mb-2 md:mb-4 text-purple-400 text-center md:text-left">
-          Diagnopro
+          MindEase: AI Mental Health Assistant
         </h3>
         <p className="text-sm md:text-base text-gray-400 text-center md:text-left">
-          An innovative app designed for medical students to practice diagnostics through gamified scenarios.
+          Developed an AI chatbot for mood journaling, coping exercises, and anonymous journaling with NLP-based response handling.
         </p>
-        <a
-          href="https://gurugsv7.github.io/DiagnoPro/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block text-purple-400 hover:text-purple-500 transition-colors font-semibold text-center md:text-left"
-        >
-          View Project
-        </a>
       </div>
     </div>
   </div>
@@ -578,10 +647,10 @@ function App() {
         <div className="flex items-center gap-4 justify-center md:justify-start">
           <Phone className="w-6 h-6 text-purple-400" />
           <a
-            href="tel:+919791165095"
+            href="tel:+917448865095"
             className="text-sm md:text-lg text-purple-400 hover:text-purple-500 transition-colors"
           >
-            +91 9791165095
+            +91 7448865095
           </a>
         </div>
 
@@ -594,7 +663,7 @@ function App() {
             rel="noopener noreferrer"
             className="text-sm md:text-lg text-purple-400 hover:text-purple-500 transition-colors"
           >
-            linkedin.com/in/gurugsv
+            www.linkedin.com/in/gurugsv
           </a>
         </div>
 
